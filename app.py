@@ -58,3 +58,9 @@ if openai_api_key:
                 )
                 response = assistant.run(query, stream=False)
                 st.markdown(response.content)
+
+
+
+
+
+
