@@ -10,7 +10,7 @@ A completely open-source AI-powered investment analysis tool that uses local Oll
 - **Real-time Data**: Live stock data via Yahoo Finance
 - **No API Keys Required**: Completely free and open source
 
-## 🚀 Quick Start
+## 🚀 Get Started
 
 ### 1. Install Ollama
 
@@ -46,9 +46,24 @@ ollama pull codellama
 
 ### 3. Install Python Dependencies
 
+**Option A: Using pip (recommended)**
 ```bash
 pip install -r requirements.txt
 ```
+
+**Option B: Using conda (alternative)**
+```bash
+# Create a new conda environment
+conda create -n ai-stock-picker python=3.11
+
+# Activate the environment
+conda activate ai-stock-picker
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**Note**: You can also use conda to install some packages, but pip is recommended for this project as some packages are only available via pip.
 
 ### 4. Start Ollama
 
@@ -119,17 +134,5 @@ The app provides:
 - Valuation metrics comparison
 - AI-generated investment analysis
 - Peer comparison tables
-
-## 🤝 Contributing
-
-Feel free to contribute by:
-- Adding new models
-- Improving the analysis logic
-- Enhancing the UI
-- Adding new features
-
-## 📄 License
-
-This project is open source and available under the MIT License.
 
 
