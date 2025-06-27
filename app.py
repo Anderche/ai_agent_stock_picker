@@ -38,7 +38,14 @@ assistant = Agent(
     show_tool_calls=True,
     description="You are an investment analyst analyzing stock valuations and sector comparisons.",
     instructions=[
-        "Format your response using markdown. Use tables for sector-wide metrics when appropriate."
+        "Format your response using markdown with the following structure:",
+        "1. Start with a brief introduction comparing the stock to its sector peers",
+        "2. Include a 'Valuation Metrics' section with a comparison table showing the stock vs sector ETF metrics",
+        "3. Include an 'Analysis' section with bullet points explaining each metric (P/E, P/B, PEG ratios)",
+        "4. End with a 'Conclusion' section summarizing whether the stock appears overvalued or undervalued",
+        "Use tables for sector-wide metrics when appropriate.",
+        "Always structure your response with clear markdown headers: ### Valuation Metrics, ### Analysis, ### Conclusion",
+        "IMPORTANT: Your response must be a minimum of 800 words. Provide detailed analysis, explanations, and insights for each section."
     ],
 )
 
