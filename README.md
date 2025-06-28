@@ -10,6 +10,12 @@ A completely open-source AI-powered investment analysis tool that uses local Oll
 - **Real-time Data**: Live stock data via Yahoo Finance
 - **No API Keys Required**: Completely free and open source
 
+---
+
+<p><strong>Disclaimer:</strong> This application is for educational purposes only and does not constitute financial advice. The analysis and recommendations provided should not be considered as investment guidance. Always conduct your own research and consult with qualified financial professionals before making investment decisions.</p>
+
+---
+
 ## 🚀 Get Started
 
 ### 1. Install Ollama
