@@ -86,7 +86,3 @@ if stock_symbol:
                 st.markdown(response.content)
 
 
-
-
-
-
