@@ -1,5 +1,7 @@
 import yfinance as yf
 import pandas as pd
+import time
+import random
 
 spdr_map = {
     "XLY": "Consumer Discretionary", "XLP": "Consumer Staples", "XLE": "Energy",
@@ -22,16 +24,121 @@ sector_constituents = {
     "XLC": ["META", "GOOGL", "GOOG", "NFLX", "CMCSA", "CHTR", "VZ", "T", "TMUS", "DISH", "PARA", "WBD", "FOX", "NWSA", "NWS", "LBRDK", "LBRDA", "LSXMK", "LSXMA", "FWONK"]
 }
 
-def get_sector_etf(symbol):
-    try:
-        info = yf.Ticker(symbol).info
-        sector = info.get("sector", "")
-        for etf, name in spdr_map.items():
-            if sector.lower() in name.lower():
-                return etf, name
-        return None, None
-    except Exception:
-        return None, None
+# Known sector mappings for common stocks (fallback only)
+known_sectors = {
+    "TSLA": "Consumer Discretionary",
+    "AAPL": "Technology", 
+    "MSFT": "Technology",
+    "GOOGL": "Technology",
+    "GOOG": "Technology",
+    "AMZN": "Consumer Discretionary",
+    "NVDA": "Technology",
+    "META": "Communication Services",
+    "NFLX": "Communication Services",
+    "ADBE": "Technology",
+    "CRM": "Technology",
+    "ORCL": "Technology",
+    "INTC": "Technology",
+    "AMD": "Technology",
+    "QCOM": "Technology",
+    "CSCO": "Technology",
+    "IBM": "Technology",
+    "TXN": "Technology",
+    "AVGO": "Technology",
+    "MU": "Technology",
+    "HD": "Consumer Discretionary",
+    "MCD": "Consumer Discretionary",
+    "NKE": "Consumer Discretionary",
+    "SBUX": "Consumer Discretionary",
+    "LOW": "Consumer Discretionary",
+    "TJX": "Consumer Discretionary",
+    "BKNG": "Consumer Discretionary",
+    "MAR": "Consumer Discretionary",
+    "HLT": "Consumer Discretionary",
+    "YUM": "Consumer Discretionary",
+    "CMG": "Consumer Discretionary",
+    "TGT": "Consumer Discretionary",
+    "COST": "Consumer Staples",
+    "WMT": "Consumer Staples",
+    "ULTA": "Consumer Discretionary",
+    "ROST": "Consumer Discretionary",
+    "LVS": "Consumer Discretionary"
+}
+
+def get_sector_etf(symbol, max_retries=3):
+    """
+    Get sector ETF for a stock symbol with retry logic for rate limiting
+    """
+    for attempt in range(max_retries):
+        try:
+            # Add longer random delay to avoid rate limiting
+            if attempt > 0:
+                time.sleep(random.uniform(3, 6))  # Longer delay between retries
+            else:
+                time.sleep(random.uniform(1, 2))  # Initial delay
+            
+            ticker = yf.Ticker(symbol)
+            
+            # Try multiple methods to get sector information
+            sector = None
+            
+            # Method 1: Try info attribute
+            try:
+                info = ticker.info
+                sector = info.get("sector", "")
+            except:
+                pass
+            
+            # Method 2: Try fast_info if available
+            if not sector:
+                try:
+                    fast_info = ticker.fast_info
+                    sector = getattr(fast_info, 'sector', '')
+                except:
+                    pass
+            
+            # Method 3: Try getting basic info
+            if not sector:
+                try:
+                    # Try a more basic approach
+                    basic_info = ticker.get_info()
+                    sector = basic_info.get("sector", "")
+                except:
+                    pass
+            
+            # Check if we got valid sector information
+            if not sector:
+                print(f"Warning: No sector found for {symbol} on attempt {attempt + 1}")
+                continue
+                
+            # Map sector to ETF
+            for etf, sector_name in spdr_map.items():
+                if sector.lower() in sector_name.lower():
+                    return etf, sector_name
+            
+            # If no exact match, try partial matching
+            for etf, sector_name in spdr_map.items():
+                if any(word in sector.lower() for word in sector_name.lower().split()):
+                    return etf, sector_name
+                    
+            print(f"Warning: Could not map sector '{sector}' for {symbol} to any ETF")
+            return None, None
+            
+        except Exception as e:
+            print(f"Error getting sector for {symbol} (attempt {attempt + 1}): {str(e)}")
+            if attempt == max_retries - 1:
+                print(f"Failed to get sector for {symbol} after {max_retries} attempts")
+                # Last resort: use known sector mapping
+                if symbol in known_sectors:
+                    sector = known_sectors[symbol]
+                    for etf, sector_name in spdr_map.items():
+                        if sector.lower() in sector_name.lower():
+                            print(f"Using fallback sector mapping for {symbol}: {sector}")
+                            return etf, sector_name
+                return None, None
+            continue
+    
+    return None, None
 
 def get_sector_constituents(etf):
     try:
@@ -45,23 +152,44 @@ def get_sector_constituents(etf):
     except Exception as e:
         return sector_constituents.get(etf, [])
 
-def get_comparative_metrics(symbols):
+def get_comparative_metrics(symbols, max_retries=2):
     rows = []
     for s in symbols:
-        try:
-            t = yf.Ticker(s)
-            info = t.info
-            rows.append({
-                "Ticker": s,
-                "P/E": info.get("trailingPE"),
-                "P/B": info.get("priceToBook"),
-                "PEG": info.get("pegRatio"),
-                "Forward P/E": info.get("forwardPE"),
-                "Market Cap": info.get("marketCap"),
-                "Analyst Rating": info.get("recommendationMean")
-            })
-        except Exception as e:
-            continue
+        for attempt in range(max_retries):
+            try:
+                # Add delay between requests to avoid rate limiting
+                if attempt > 0:
+                    time.sleep(random.uniform(0.5, 1.5))
+                
+                t = yf.Ticker(s)
+                info = t.info
+                
+                # Check if we got valid data
+                if not info or len(info) < 5:  # Basic check for valid response
+                    print(f"Warning: Invalid data for {s} on attempt {attempt + 1}")
+                    if attempt == max_retries - 1:
+                        continue
+                    else:
+                        continue
+                
+                rows.append({
+                    "Ticker": s,
+                    "P/E": info.get("trailingPE"),
+                    "P/B": info.get("priceToBook"),
+                    "PEG": info.get("pegRatio"),
+                    "Forward P/E": info.get("forwardPE"),
+                    "Market Cap": info.get("marketCap"),
+                    "Analyst Rating": info.get("recommendationMean")
+                })
+                break  # Success, move to next symbol
+                
+            except Exception as e:
+                print(f"Error getting data for {s} (attempt {attempt + 1}): {str(e)}")
+                if attempt == max_retries - 1:
+                    print(f"Failed to get data for {s} after {max_retries} attempts")
+                    continue
+                else:
+                    continue
     
     df = pd.DataFrame(rows)
     
