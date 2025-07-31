@@ -2,9 +2,23 @@
 
 A completely open-source AI-powered investment analysis tool that uses local Ollama models to analyze stock valuations and compare them against sector peers.
 
+## 🧠 Agentive AI Characteristics
+
+This application embodies **agentive AI** through autonomous decision-making capabilities and goal-oriented behavior. The system uses the Agno framework to create an intelligent agent characterized by:
+
+**🤖 Autonomous Analysis**: The agent independently analyzes stock valuations by automatically detecting sectors, fetching peer data, and calculating comparative metrics without human intervention for each step.
+
+**🔧 Tool Integration**: It leverages multiple specialized tools (YFinance for real-time data, Ollama for local AI reasoning) to gather information and generate insights, demonstrating the agent's ability to orchestrate complex workflows.
+
+**🎯 Goal-Directed Behavior**: The agent operates with clear objectives - comparing stocks against sector peers, identifying valuation discrepancies, and providing investment analysis - executing these tasks systematically through structured prompts and instructions.
+
+**🧮 Adaptive Reasoning**: Using local Ollama models, the agent processes financial data contextually, generating detailed 800+ word analyses that explain valuation metrics and provide conclusions about whether stocks are overvalued or undervalued.
+
+**📊 Proactive Information Gathering**: The agent doesn't just respond to queries but proactively identifies relevant sector ETFs, fetches constituent data, and performs comprehensive peer comparisons to provide actionable investment insights.
+
 ## ✨ Features
 
-- **Local AI Processing**: Uses Ollama models running locally on your machine
+- **Local AI Processing**: Uses Ollama models running locally
 - **Sector Analysis**: Automatically detects stock sectors and compares against peers
 - **Valuation Metrics**: P/E, P/B, PEG ratios and more
 - **Real-time Data**: Live stock data via Yahoo Finance
@@ -13,6 +27,16 @@ A completely open-source AI-powered investment analysis tool that uses local Oll
 ---
 
 <p><strong>Disclaimer:</strong> This application is for educational purposes only and does not constitute financial advice. The analysis and recommendations provided should not be considered as investment guidance. Always conduct your own research and consult with qualified financial professionals before making investment decisions.</p>
+
+---
+
+## 📚 Definitions
+
+- **P/E (Price-to-Earnings)**: Ratio of stock price to earnings per share, indicating how much investors pay for each dollar of earnings
+- **P/B (Price-to-Book)**: Ratio comparing market price to book value per share, useful for valuing asset-heavy companies
+- **PEG (Price/Earnings-to-Growth)**: P/E ratio divided by earnings growth rate, showing if growth justifies valuation
+- **EV/EBITDA**: Enterprise Value to EBITDA, measures total company value relative to earnings before expenses
+
 
 ---
 
