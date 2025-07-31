@@ -4,17 +4,17 @@ A completely open-source AI-powered investment analysis tool that uses local Oll
 
 ## 🧠 Agentive AI Characteristics
 
-This application embodies **agentive AI** through autonomous decision-making capabilities and goal-oriented behavior. The system uses the Agno framework to create an intelligent agent characterized by:
+This application embodies **agentive AI** through autonomous decision-making capabilities and goal-oriented behavior. The system uses the **Agno (v1.7.0)** framework to create an intelligent agent characterized by:
 
 **🤖 Autonomous Analysis**: The agent independently analyzes stock valuations by automatically detecting sectors, fetching peer data, and calculating comparative metrics without human intervention for each step.
 
-**🔧 Tool Integration**: It leverages multiple specialized tools (YFinance for real-time data, Ollama for local AI reasoning) to gather information and generate insights, demonstrating the agent's ability to orchestrate complex workflows.
+**🔧 Tool Integration**: It leverages multiple specialized tools (**YFinance v0.2.63** for real-time data, **Ollama v0.5.1** for local AI reasoning) to gather information and generate insights, demonstrating the agent's ability to orchestrate complex workflows.
 
 **🎯 Goal-Directed Behavior**: The agent operates with clear objectives - comparing stocks against sector peers, identifying valuation discrepancies, and providing investment analysis - executing these tasks systematically through structured prompts and instructions.
 
-**🧮 Adaptive Reasoning**: Using local Ollama models, the agent processes financial data contextually, generating detailed 800+ word analyses that explain valuation metrics and provide conclusions about whether stocks are overvalued or undervalued.
+**🧮 Adaptive Reasoning**: Using local **Ollama v0.5.1** models, the agent processes financial data contextually, generating detailed 800+ word analyses that explain valuation metrics and provide conclusions about whether stocks are overvalued or undervalued.
 
-**📊 Proactive Information Gathering**: The agent doesn't just respond to queries but proactively identifies relevant sector ETFs, fetches constituent data, and performs comprehensive peer comparisons to provide actionable investment insights.
+**📊 Proactive Information Gathering**: The agent doesn't just respond to queries but proactively identifies relevant sector ETFs, fetches constituent data using **YFinance v0.2.63**, and performs comprehensive peer comparisons with **Pandas v2.3.0** data processing to provide actionable investment insights through the **Streamlit v1.46.1** interface.
 
 ## ✨ Features
 
