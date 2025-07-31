@@ -194,6 +194,13 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# Disclaimer
+st.markdown("""
+<div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 8px 12px; margin-bottom: 1rem; font-size: 0.85rem; color: #92400e;">
+    ⚠️ <strong>Disclaimer:</strong> This tool is for educational purposes only. Not financial advice. Always do your own research.
+</div>
+""", unsafe_allow_html=True)
+
 # Sidebar
 with st.sidebar:
     st.header("🤖 Configuration")
