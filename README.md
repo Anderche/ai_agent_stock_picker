@@ -2,6 +2,10 @@
 
 A completely open-source AI-powered investment analysis tool that uses local Ollama models to analyze stock valuations and compare them against sector peers.
 
+![AI Investment Agent Screenshot](screenshot_app.png)
+
+*The AI Investment Agent interface showing comprehensive stock analysis with sector comparisons and AI-generated insights.*
+
 ## 🧠 Agentive AI Characteristics
 
 This application embodies **agentive AI** through autonomous decision-making capabilities and goal-oriented behavior. The system uses the **Agno (v1.7.0)** framework to create an intelligent agent characterized by:
