@@ -112,32 +112,76 @@ st.set_page_config(
 st.markdown("""
 <style>
     .main-header {
-        background: linear-gradient(90deg, #ff4b4b, #ff6b6b);
-        padding: 1rem;
-        border-radius: 10px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 1.5rem;
+        border-radius: 16px;
         margin-bottom: 2rem;
         text-align: center;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .main-header h1 {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    .main-header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        margin: 0;
     }
     .metric-card {
-        background: #f0f2f6;
-        padding: 1rem;
-        border-radius: 10px;
-        border-left: 4px solid #ff4b4b;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        padding: 1.2rem;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
         margin: 0.5rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+    }
+    .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
     .status-success {
-        background: #d4edda;
-        color: #155724;
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        color: #065f46;
         padding: 0.75rem;
-        border-radius: 5px;
-        border: 1px solid #c3e6cb;
+        border-radius: 8px;
+        border: 1px solid #6ee7b7;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.1);
     }
     .status-error {
-        background: #f8d7da;
-        color: #721c24;
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        color: #991b1b;
         padding: 0.75rem;
-        border-radius: 5px;
-        border: 1px solid #f5c6cb;
+        border-radius: 8px;
+        border: 1px solid #fca5a5;
+        box-shadow: 0 2px 4px rgba(239, 68, 68, 0.1);
+    }
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 8px 8px 0 0;
+        border: 1px solid #e2e8f0;
+        color: #64748b;
+        font-weight: 500;
+    }
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-color: #667eea;
+    }
+    .stSidebar {
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    .stMetric {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -147,6 +191,13 @@ st.markdown("""
 <div class="main-header">
     <h1>📈 AI Investment Agent as Sector Analyst</h1>
     <p>Enter a stock, analyze its valuation, then compare it against its sector peers.</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Disclaimer
+st.markdown("""
+<div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 8px 12px; margin-bottom: 1rem; font-size: 0.85rem; color: #92400e;">
+    ⚠️ <strong>Disclaimer:</strong> This tool is for educational purposes only. Not financial advice. Always do your own research.
 </div>
 """, unsafe_allow_html=True)
 

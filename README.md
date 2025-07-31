@@ -1,6 +1,12 @@
 # 🤖 AI Investment Agent - Open Source Edition
 
+> ⚠️ **DISCLAIMER**: This application is for educational and research purposes only. The analysis and recommendations provided do not constitute financial advice. Always conduct your own research and consult with qualified financial professionals before making investment decisions.
+
 A completely open-source AI-powered investment analysis tool that uses local Ollama models to analyze stock valuations and compare them against sector peers.
+
+![AI Investment Agent Screenshot](screenshot_app.png)
+
+*The AI Investment Agent interface showing comprehensive stock analysis with sector comparisons and AI-generated insights.*
 
 ## 🧠 Agentive AI Characteristics
 
