@@ -53,6 +53,7 @@ stock_symbol = st.text_input("📊 Enter a stock symbol (e.g. AAPL, MSFT)").stri
 
 if stock_symbol:
     with st.spinner("Detecting sector and fetching data..."):
+        st.info(f"🔍 Step 1: Detecting sector for {stock_symbol}...")
         sector_etf, sector_name = get_sector_etf(stock_symbol)
 
         if not sector_etf:
@@ -60,7 +61,10 @@ if stock_symbol:
         else:
             st.success(f"{stock_symbol} belongs to the '{sector_name}' sector (ETF: {sector_etf})")
 
+            st.info(f"🔍 Step 2: Fetching sector constituents for {sector_etf}...")
             df = get_sector_constituents(sector_etf)
+            
+            st.info(f"🔍 Step 3: Getting comparative metrics for {len(df)} stocks...")
             comp_df = get_comparative_metrics(df)
 
             # Check if we got any data
