@@ -10,59 +10,18 @@ spdr_map = {
 }
 
 # Predefined sector constituents as fallback
-sector_constituents = {
-    "XLK": ["AAPL", "MSFT", "GOOGL", "GOOG", "AMZN", "NVDA", "META", "TSLA", "NFLX", "ADBE", "CRM", "ORCL", "INTC", "AMD", "QCOM", "CSCO", "IBM", "TXN", "AVGO", "MU"],
-    "XLY": ["AMZN", "TSLA", "HD", "MCD", "NKE", "SBUX", "LOW", "TJX", "BKNG", "MAR", "HLT", "YUM", "CMG", "TGT", "COST", "WMT", "ULTA", "ROST", "TJX", "LVS"],
-    "XLP": ["PG", "KO", "PEP", "WMT", "COST", "PM", "MO", "CL", "EL", "GIS", "K", "HSY", "SJM", "CAG", "KMB", "HRL", "SJM", "CPB", "KHC", "MDLZ"],
-    "XLE": ["XOM", "CVX", "COP", "EOG", "SLB", "PXD", "VLO", "MPC", "PSX", "OXY", "HAL", "BKR", "DVN", "KMI", "WMB", "OKE", "ET", "ENB", "TRP", "PBA"],
-    "XLF": ["BRK-B", "JPM", "BAC", "WFC", "GS", "MS", "C", "BLK", "SPGI", "CB", "AXP", "USB", "PNC", "TFC", "COF", "SCHW", "AIG", "MET", "PRU", "ALL"],
-    "XLV": ["JNJ", "UNH", "PFE", "ABBV", "TMO", "MRK", "ABT", "DHR", "BMY", "AMGN", "GILD", "CVS", "CI", "ANTM", "HUM", "CNC", "WBA", "REGN", "BIIB", "VRTX"],
-    "XLI": ["UNP", "HON", "UPS", "RTX", "CAT", "DE", "LMT", "BA", "GE", "MMM", "EMR", "ETN", "ITW", "NSC", "FDX", "CSX", "WM", "RSG", "WM", "PCAR"],
-    "XLB": ["LIN", "APD", "FCX", "NEM", "DOW", "DD", "ECL", "BLL", "NUE", "VMC", "ALB", "CTVA", "IFF", "LYB", "SHW", "BLL", "VMC", "NUE", "FCX", "NEM"],
-    "XLU": ["NEE", "DUK", "SO", "D", "AEP", "SRE", "XEL", "WEC", "DTE", "ED", "EIX", "PEG", "AEE", "CMS", "CNP", "ATO", "LNT", "BKH", "NI", "OGE"],
-    "XLRE": ["AMT", "PLD", "CCI", "EQIX", "PSA", "O", "DLR", "WELL", "SPG", "EQR", "AVB", "MAA", "VICI", "ARE", "BXP", "KIM", "REG", "FRT", "UDR", "ESS"],
-    "XLC": ["META", "GOOGL", "GOOG", "NFLX", "CMCSA", "CHTR", "VZ", "T", "TMUS", "DISH", "PARA", "WBD", "FOX", "NWSA", "NWS", "LBRDK", "LBRDA", "LSXMK", "LSXMA", "FWONK"]
-}
-
-# Known sector mappings for common stocks (fallback only)
-known_sectors = {
-    "TSLA": "Consumer Discretionary",
-    "AAPL": "Technology", 
-    "MSFT": "Technology",
-    "GOOGL": "Technology",
-    "GOOG": "Technology",
-    "AMZN": "Consumer Discretionary",
-    "NVDA": "Technology",
-    "META": "Communication Services",
-    "NFLX": "Communication Services",
-    "ADBE": "Technology",
-    "CRM": "Technology",
-    "ORCL": "Technology",
-    "INTC": "Technology",
-    "AMD": "Technology",
-    "QCOM": "Technology",
-    "CSCO": "Technology",
-    "IBM": "Technology",
-    "TXN": "Technology",
-    "AVGO": "Technology",
-    "MU": "Technology",
-    "HD": "Consumer Discretionary",
-    "MCD": "Consumer Discretionary",
-    "NKE": "Consumer Discretionary",
-    "SBUX": "Consumer Discretionary",
-    "LOW": "Consumer Discretionary",
-    "TJX": "Consumer Discretionary",
-    "BKNG": "Consumer Discretionary",
-    "MAR": "Consumer Discretionary",
-    "HLT": "Consumer Discretionary",
-    "YUM": "Consumer Discretionary",
-    "CMG": "Consumer Discretionary",
-    "TGT": "Consumer Discretionary",
-    "COST": "Consumer Staples",
-    "WMT": "Consumer Staples",
-    "ULTA": "Consumer Discretionary",
-    "ROST": "Consumer Discretionary",
-    "LVS": "Consumer Discretionary"
+SECTOR_CONSTITUENTS_DATA = {
+    "XLK": ["AAPL", "AVGO", "CRM", "CSCO", "IBM", "INTU", "MSFT", "NVDA", "ORCL", "PLTR"],
+    "XLY": ["AMZN", "BKNG", "HD", "LOW", "MCD", "NKE", "ORLY", "SBUX", "TJX", "TSLA"],
+    "XLP": ["CL", "COST", "KMB", "KO", "MDLZ", "MO", "PEP", "PG", "PM", "WMT"],
+    "XLE": ["COP", "CVX", "EOG", "KMI", "MPC", "OKE", "PSX", "SLB", "WMB", "XOM"],
+    "XLF": ["AXP", "BAC", "BRK-B", "GS", "JPM", "MA", "PGR", "SPGI", "V", "WFC"],
+    "XLV": ["ABBV", "ABT", "AMGN", "BSX", "ISRG", "JNJ", "LLY", "MRK", "TMO", "UNH"],
+    "XLI": ["ADP", "BA", "CAT", "DE", "GE", "GEV", "HON", "RTX", "UBER", "UNP"],
+    "XLB": ["APD", "CTVA", "DD", "ECL", "FCX", "LIN", "MLM", "NEM", "SHW", "VMC"],
+    "XLU": ["AEP", "CEG", "D", "DUK", "EXC", "NEE", "PEG", "SO", "SRE", "VST"],
+    "XLRE": ["AMT", "CBRE", "CCI", "DLR", "EQIX", "O", "PLD", "PSA", "SPG", "WELL"],
+    "XLC": ["CHTR", "DIS", "EA", "GOOG", "GOOGL", "LYV", "META", "NFLX", "T", "TTWO"]
 }
 
 def get_sector_etf(symbol, max_retries=3):
@@ -111,15 +70,42 @@ def get_sector_etf(symbol, max_retries=3):
                 print(f"Warning: No sector found for {symbol} on attempt {attempt + 1}")
                 continue
                 
-            # Map sector to ETF
-            for etf, sector_name in spdr_map.items():
-                if sector.lower() in sector_name.lower():
-                    return etf, sector_name
+            # Try exact match first
+            for etf, name in spdr_map.items():
+                if sector.lower() == name.lower():
+                    return etf, name
             
-            # If no exact match, try partial matching
-            for etf, sector_name in spdr_map.items():
-                if any(word in sector.lower() for word in sector_name.lower().split()):
-                    return etf, sector_name
+            # Try partial match
+            for etf, name in spdr_map.items():
+                if sector.lower() in name.lower() or name.lower() in sector.lower():
+                    return etf, name
+            
+            # Try common sector name variations
+            sector_variations = {
+                "technology": "XLK",
+                "tech": "XLK",
+                "consumer discretionary": "XLY",
+                "consumer cyclical": "XLY",  # Yahoo Finance uses "Consumer Cyclical"
+                "consumer staples": "XLP",
+                "consumer defensive": "XLP",  # Yahoo Finance uses "Consumer Defensive"
+                "energy": "XLE",
+                "financials": "XLF",
+                "financial services": "XLF",
+                "health care": "XLV",
+                "healthcare": "XLV",
+                "industrials": "XLI",
+                "materials": "XLB",
+                "utilities": "XLU",
+                "real estate": "XLRE",
+                "communication services": "XLC",
+                "communications": "XLC"
+            }
+            
+            sector_lower = sector.lower()
+            if sector_lower in sector_variations:
+                etf = sector_variations[sector_lower]
+                name = spdr_map[etf]
+                return etf, name
                     
             print(f"Warning: Could not map sector '{sector}' for {symbol} to any ETF")
             return None, None
@@ -128,13 +114,6 @@ def get_sector_etf(symbol, max_retries=3):
             print(f"Error getting sector for {symbol} (attempt {attempt + 1}): {str(e)}")
             if attempt == max_retries - 1:
                 print(f"Failed to get sector for {symbol} after {max_retries} attempts")
-                # Last resort: use known sector mapping
-                if symbol in known_sectors:
-                    sector = known_sectors[symbol]
-                    for etf, sector_name in spdr_map.items():
-                        if sector.lower() in sector_name.lower():
-                            print(f"Using fallback sector mapping for {symbol}: {sector}")
-                            return etf, sector_name
                 return None, None
             continue
     
@@ -148,9 +127,15 @@ def get_sector_constituents(etf):
             symbols = holdings['symbol'].dropna().unique().tolist()
             return symbols
         else:
-            return sector_constituents.get(etf, [])
+            return SECTOR_CONSTITUENTS_DATA.get(etf, [])
     except Exception as e:
-        return sector_constituents.get(etf, [])
+        return SECTOR_CONSTITUENTS_DATA.get(etf, [])
+
+def sector_constituents(etf):
+    """
+    Alias for get_sector_constituents for backward compatibility
+    """
+    return get_sector_constituents(etf)
 
 def get_comparative_metrics(symbols, max_retries=2):
     rows = []

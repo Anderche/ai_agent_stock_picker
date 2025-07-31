@@ -22,6 +22,10 @@ This application embodies **agentive AI** through autonomous decision-making cap
 - **Sector Analysis**: Automatically detects stock sectors and compares against peers
 - **Valuation Metrics**: P/E, P/B, PEG ratios and more
 - **Real-time Data**: Live stock data via Yahoo Finance
+- **Interactive Charts**: Beautiful Plotly visualizations with sector ETF comparisons
+- **AI-Generated Descriptions**: Dynamic company overviews using selected Ollama models
+- **Enhanced UI**: Professional gradient design with tabs and sidebar
+- **Sector ETF Integration**: Optional SPDR ETF price comparison
 - **No API Keys Required**: Completely free and open source
 
 ---
@@ -115,11 +119,13 @@ streamlit run app.py
 
 1. **Select Model**: Choose from available Ollama models (llama3.2, mistral, codellama, etc.)
 2. **Enter Stock Symbol**: Type a stock symbol (e.g., AAPL, MSFT, TSLA)
-3. **View Analysis**: The app will:
-   - Detect the stock's sector
-   - Fetch sector constituents
-   - Calculate valuation metrics
-   - Generate AI-powered analysis
+3. **Configure Options**: 
+   - Enable sector ETF comparison (optional)
+   - Check Ollama connection status
+4. **View Analysis**: The app provides three tabs:
+   - **Overview**: Key metrics, AI-generated company description, and price charts
+   - **Deep Analysis**: Sector-wide comparisons and valuation charts
+   - **AI Report**: Investment analysis and recommendations
 
 ## 🧠 Supported Models
 
@@ -152,10 +158,45 @@ If you get a model error:
 
 ## 🏗️ Architecture
 
-- **Frontend**: Streamlit web interface
-- **AI Engine**: Ollama with local models
+- **Frontend**: Streamlit web interface with Plotly charts
+- **AI Engine**: Ollama with local models for company descriptions
 - **Data Source**: Yahoo Finance via yfinance
-- **Analysis**: Sector-based peer comparison
+- **Analysis**: Sector-based peer comparison with SPDR ETFs
+- **Utilities**: Enhanced sector mapping and ETF holdings management
+
+## 📁 Project Structure
+
+```
+ai_agent_stock_picker/
+├── app.py                 # Main Streamlit application
+├── utils.py               # Utility functions for sector mapping and data fetching
+├── script_get_symbols.py  # Script to fetch and update ETF holdings data
+├── test_sector_debug.py   # Debug script for testing sector matching
+├── requirements.txt       # Python dependencies
+└── README.md             # This file
+```
+
+## 🔧 Additional Tools
+
+### Updating ETF Holdings Data
+
+To update the sector ETF holdings data:
+
+```bash
+python script_get_symbols.py
+```
+
+This will create a `ticker_symbols/` directory with updated holdings data.
+
+### Testing Sector Matching
+
+To test the sector ETF matching functionality:
+
+```bash
+python test_sector_debug.py
+```
+
+This helps debug sector detection issues with specific stocks.
 
 ## 📈 Example Output
 
